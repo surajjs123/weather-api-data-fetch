@@ -1,0 +1,46 @@
+# Docker Compose version
+version: '3.8'
+
+# Define services (containers)
+services:
+  # Your weather API service
+  weather-api:
+    # Build from Dockerfile in current directory
+    build: .
+    
+    # Give container a friendly name
+    container_name: weather-backend
+    
+    # Map port 5000 from container to port 5000 on your computer
+    ports:
+      - "5000:5000"
+    
+    # Mount folders so data persists even when container restarts
+    volumes:
+      - ./data:/SYNB_assignment/data           # Database storage
+      - ./exports:/SYNB_assignment/exports     # Generated files
+    
+    # Environment variables
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Health check configuration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Network configuration
+    networks:
+      - weather-network
+
+# Define networks
+networks:
+  weather-network:
+    driver: bridge
