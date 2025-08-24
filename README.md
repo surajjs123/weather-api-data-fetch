@@ -1,12 +1,9 @@
 # weather-api-data-fetch
 Fetching  weather data from api using python fastapi
 
-Setup Instructions
-1. Install Dependencies
-pip install -r requirements.txt
-
-2.Run the Application
-python Assignment_SYNB.py
+#clone the git url 
+Run with Docker (One Command!)
+docker-compose up -d
 
 Usage Workflow
 
