@@ -11,5 +11,7 @@ python Assignment_SYNB.py
 Usage Workflow
 
 Fetch Data: First call /weather-report to fetch and store weather data
+
 Export Excel: Call /export/excel to get data in Excel format
+
 Generate PDF: Call /export/pdf to get a visual report with chart   
